@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Contact from './Contact';
+import { connect } from redux;
+import PropTypes from 'prop-types';
+import { GET_CONTACTS } from '../../actions/types';
+
 
 class Contacts extends Component {
 
@@ -18,4 +22,21 @@ class Contacts extends Component {
   }
 }
 
-export default Contacts;
+Contacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  getContacts: PropTypes.func.isRequired
+};
+
+// the property which keeps the reducer is called contact, which in turn keeps the state in contacts array hence the contacts property takes state.contact.contacts
+const mapStateToProps = (state) => ({
+  contacts: state.contact.contacts
+});
+
+// getContacts keeps the dispatch function and passes it as a prop
+const mapDispatchToProps = (dispatch) => ({
+  getContacts: () => dispatch({type: GET_CONTACTS})
+});
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
