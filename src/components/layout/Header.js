@@ -13,7 +13,7 @@ const Header = props => {
         <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/react-redux-playground" className="nav-link">
                 <i className="fas fa-home" /> Home
               </Link>
             </li>
